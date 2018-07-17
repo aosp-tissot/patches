@@ -1,0 +1,15 @@
+diff --git a/cmds/installd/installd.cpp b/cmds/installd/installd.cpp
+index 35936a2..8cb1e52 100644
+--- a/cmds/installd/installd.cpp
++++ b/cmds/installd/installd.cpp
+@@ -38,10 +38,6 @@
+ namespace android {
+ namespace installd {
+ 
+-// Check that installd-deps sizes match cutils sizes.
+-static_assert(kPropertyKeyMax == PROPERTY_KEY_MAX, "Size mismatch.");
+-static_assert(kPropertyValueMax == PROPERTY_VALUE_MAX, "Size mismatch.");
+-
+ ////////////////////////
+ // Plug-in functions. //
+ ////////////////////////

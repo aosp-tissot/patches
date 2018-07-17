@@ -1,0 +1,22 @@
+diff --git a/private/file_contexts b/private/file_contexts
+index 5369758..c1ce0fa 100644
+--- a/private/file_contexts
++++ b/private/file_contexts
+@@ -468,3 +468,8 @@
+ /mnt/user(/.*)?             u:object_r:mnt_user_file:s0
+ /mnt/runtime(/.*)?          u:object_r:storage_file:s0
+ /storage(/.*)?              u:object_r:storage_file:s0
++
++############################
++# exfat
++/system/bin/fsck\.exfat                 u:object_r:fsck_exec:s0
++/system/bin/fsck\.ntfs                  u:object_r:fsck_exec:s0
+diff --git a/private/genfs_contexts b/private/genfs_contexts
+index e77a39b..f870ede 100644
+--- a/private/genfs_contexts
++++ b/private/genfs_contexts
+@@ -120,3 +120,4 @@ genfscon pstore / u:object_r:pstorefs:s0
+ genfscon functionfs / u:object_r:functionfs:s0
+ genfscon usbfs / u:object_r:usbfs:s0
+ genfscon binfmt_misc / u:object_r:binfmt_miscfs:s0
++genfscon exfat / u:object_r:vfat:s0

@@ -1,0 +1,64 @@
+diff --git a/target/product/AndroidProducts.mk b/target/product/AndroidProducts.mk
+index 9e2adee..026ecc4 100644
+--- a/target/product/AndroidProducts.mk
++++ b/target/product/AndroidProducts.mk
+@@ -63,7 +63,6 @@ PRODUCT_MAKEFILES := \
+     $(LOCAL_DIR)/full_mips.mk \
+     $(LOCAL_DIR)/aosp_arm64.mk \
+     $(LOCAL_DIR)/aosp_arm64_a.mk \
+-    $(LOCAL_DIR)/aosp_arm64_ab.mk \
+     $(LOCAL_DIR)/aosp_mips64.mk \
+     $(LOCAL_DIR)/aosp_x86_64.mk \
+     $(LOCAL_DIR)/aosp_x86_64_a.mk \
+diff --git a/target/product/aosp_arm64_ab.mk b/target/product/aosp_arm64_ab.mk
+deleted file mode 100644
+index c96cb91..0000000
+--- a/target/product/aosp_arm64_ab.mk
++++ /dev/null
+@@ -1,33 +0,0 @@
+-#
+-# Copyright (C) 2017 The Android Open-Source Project
+-#
+-# Licensed under the Apache License, Version 2.0 (the "License");
+-# you may not use this file except in compliance with the License.
+-# You may obtain a copy of the License at
+-#
+-#      http://www.apache.org/licenses/LICENSE-2.0
+-#
+-# Unless required by applicable law or agreed to in writing, software
+-# distributed under the License is distributed on an "AS IS" BASIS,
+-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+-# See the License for the specific language governing permissions and
+-# limitations under the License.
+-#
+-
+-# PRODUCT_PROPERTY_OVERRIDES cannot be used here because sysprops will be at
+-# /vendor/[build|default].prop when build split is on. In order to have sysprops
+-# on the generic system image, place them in build/make/target/board/
+-# treble_system.prop.
+-
+-include build/make/target/product/treble_common_64.mk
+-
+-AB_OTA_UPDATER := true
+-AB_OTA_PARTITIONS := system
+-PRODUCT_PACKAGES += \
+-    update_engine \
+-    update_verifier
+-
+-PRODUCT_NAME := aosp_arm64_ab
+-PRODUCT_DEVICE := generic_arm64_ab
+-PRODUCT_BRAND := Android
+-PRODUCT_MODEL := AOSP on ARM64
+diff --git a/tools/post_process_props.py b/tools/post_process_props.py
+index 9355e4b..2f483c3 100755
+--- a/tools/post_process_props.py
++++ b/tools/post_process_props.py
+@@ -22,7 +22,7 @@ import sys
+ # See PROP_VALUE_MAX in system_properties.h.
+ # The constant in system_properties.h includes the terminating NUL,
+ # so we decrease the value by 1 here.
+-PROP_VALUE_MAX = 91
++PROP_VALUE_MAX = 125
+ 
+ # Put the modifications that you need to make into the /system/build.prop into this
+ # function. The prop object has get(name) and put(name,value) methods.
